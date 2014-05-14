@@ -14,7 +14,6 @@ import java.nio.file.spi.FileSystemProvider;
 import java.util.Set;
 
 import com.google.common.base.Joiner;
-import com.google.common.io.Closeables;
 
 import com.xebialabs.overthere.OverthereConnection;
 
@@ -38,7 +37,7 @@ public class OverthereFileSystem extends FileSystem {
 
     @Override
     public void close() throws IOException {
-        Closeables.closeQuietly(connection);
+        connection.close();
         connection = null;
         provider.cache.remove(uri);
     }

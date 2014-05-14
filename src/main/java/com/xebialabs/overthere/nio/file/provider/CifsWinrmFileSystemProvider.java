@@ -18,7 +18,7 @@ public class CifsWinrmFileSystemProvider extends OverthereFileSystemProvider {
 
     @Override
     protected OverthereConnection getConnection(final ConnectionOptions options) {
-        options.set(CifsConnectionBuilder.CONNECTION_TYPE, CifsConnectionType.WINRM);
+        options.set(CifsConnectionBuilder.CONNECTION_TYPE, CifsConnectionType.WINRM_INTERNAL);
         options.set(ConnectionOptions.OPERATING_SYSTEM, OperatingSystemFamily.WINDOWS);
         return Overthere.getConnection(CIFS_PROTOCOL, options);
     }

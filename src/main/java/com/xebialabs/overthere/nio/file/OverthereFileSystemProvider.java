@@ -158,8 +158,8 @@ public abstract class OverthereFileSystemProvider extends FileSystemProvider {
 
             @Override
             public void close() throws IOException {
-                Closeables.closeQuietly(in);
-                Closeables.closeQuietly(out);
+                Closeables.close(in, true); // Assume reader won't ever throw at close()
+                Closeables.close(out, false); // Don't swallow a throw by writer
             }
 
             @Override

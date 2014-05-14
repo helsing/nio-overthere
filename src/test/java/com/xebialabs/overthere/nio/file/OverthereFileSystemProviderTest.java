@@ -9,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.google.common.collect.Maps;
-import com.google.common.io.Closeables;
 
 import com.xebialabs.overthere.OperatingSystemFamily;
 
@@ -32,7 +31,7 @@ public class OverthereFileSystemProviderTest {
 
     @AfterMethod
     public void closeFileSystem() throws IOException {
-        Closeables.closeQuietly(fileSystem);
+        fileSystem.close();
         Files.walkFileTree(tempDir.toPath(), new DeleteDirVisitor());
     }
 
